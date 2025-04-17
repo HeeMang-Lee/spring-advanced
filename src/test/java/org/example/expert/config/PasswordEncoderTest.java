@@ -2,7 +2,6 @@ package org.example.expert.config;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.mockito.InjectMocks;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -12,7 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ExtendWith(SpringExtension.class)
 class PasswordEncoderTest {
 
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    @InjectMocks
+    private PasswordEncoder passwordEncoder;
+    // private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Test
     void matches_메서드가_정상적으로_동작한다() {
