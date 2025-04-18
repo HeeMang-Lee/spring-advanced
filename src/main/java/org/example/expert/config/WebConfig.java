@@ -12,19 +12,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 @Configuration
+@RequiredArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
 
     private final AdminApiLoggingInterceptor adminApiLoggingInterceptor;
 
-    @Autowired
-    public WebConfig(AdminApiLoggingInterceptor adminApiLoggingInterceptor) {
-        this.adminApiLoggingInterceptor = adminApiLoggingInterceptor;
-    }
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(adminApiLoggingInterceptor)
-            .addPathPatterns("/api/admin/comments/**", "/api/admin/users/**");
+            .addPathPatterns("/admin/comments/**", "/admin/users/**");
     }
 
     // ArgumentResolver 등록
